@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LinksService} from '../links.service';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 
 @Component({
@@ -9,27 +10,15 @@ import {LinksService} from '../links.service';
   styleUrls: ['./youtube.component.css']
 })
 export class YoutubeComponent implements OnInit {
-
-  constructor(private router: ActivatedRoute, private linkService: LinksService) { }
-links = [];
+url: string;
+  videoLink: SafeUrl;
+  constructor(private router: ActivatedRoute, public sanitizer: DomSanitizer) {
+    this.photoURL();
+  }
   ngOnInit() {
-    this.checkVideo();
-    console.log(this.router.snapshot.params['id']);
   }
-  checkVideo() {
-    console.log('started');
-    this.linkService.getLinks().subscribe(
-      (data: any) => {
-        this.links = data.items;
-        console.log(this.links);
-      },
-      (err) => {
-        this.links = err;
-        console.log('error' + err);
-      },
-      () => {
-        console.log('end');
-      });
+  photoURL() {
+    this.url = 'https://www.youtube.com/embed/' + this.router.snapshot.params['id'];
+    this.videoLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
   }
-
 }
