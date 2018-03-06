@@ -10,11 +10,10 @@ export const routes: Routes = [{
 }, {
   path: 'login',
   component: LoginComponent,
-  children: [{
+}, {
     path: 'home',
     component: HomeComponent
   }, {
     path: 'youtube/:id',
     component: YoutubeComponent
-  }]
-}];
+  }];

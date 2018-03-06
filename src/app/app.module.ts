@@ -11,6 +11,7 @@ import {RouterModule} from '@angular/router';
 import {routes} from './app.routes';
 import {LinksService} from './links.service';
 import {HttpClientModule} from '@angular/common/http';
+import { HomeChildComponent } from './home/home-child/home-child.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    HomeChildComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,6 @@ import {LinksService} from '../links.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
-  // providers: [YoutubeService]
 })
 export class HomeComponent implements OnInit {
 
@@ -14,6 +13,11 @@ export class HomeComponent implements OnInit {
   }
 
   links = [];
+
+  thumbnail = [];
+  title: string;
+  id: string;
+
 
   ngOnInit() {
     this.checkSubscribe();

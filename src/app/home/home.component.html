@@ -1,14 +1,14 @@
 
-<h1>Youtube List</h1>
-<div>
-  <ul *ngFor="let link of links">
-    <li>{{  link.id.videoId }}</li>
-   <a routerLink="/login/youtube/{{ link.id.videoId }}" routerLinkActive="active" ><li>{{  link.snippet.title }}</li></a>
-    <li>{{ link.snippet.description}}</li>
-    <img src= "{{link.snippet.thumbnails.default.url}}"  alt="Forest" height={{link.snippet.thumbnails.default.height}}
-         width={{link.snippet.thumbnails.default.width}}>
-  </ul>
+<div class="container">
+  <h1 class="title">Youtube List</h1>
+  <div class="columns">
+    <app-home-child *ngFor="let link of links"
+                    [thumbnail]="link.snippet.thumbnails"
+                    [title]="link.snippet.title"
+                    [id]="link.id.videoId"  ></app-home-child>
+  </div>
 </div>
-<router-outlet></router-outlet>
+
+
 
 
